@@ -1,45 +1,49 @@
 <?php
 /**
 * Plugin Name: WP News and Scrolling Widgets
-* Plugin URL: https://www.essentialplugin.com/wordpress-plugin/sp-news-and-scrolling-widgets/
+* Plugin URL: https://essentialplugin.com/wordpress-plugin/sp-news-and-scrolling-widgets/
 * Text Domain: sp-news-and-widget
 * Domain Path: /languages/
 * Description: A simple News and three widgets(static, scrolling and with thumbs) plugin. Also work with Gutenberg shortcode block.
-* Version: 5.0.4
+* Version: 5.0.5
 * Author: Essential Plugin
-* Author URI: https://www.essentialplugin.com
+* Author URI: https://essentialplugin.com
 * Contributors: Essential Plugin
 *
 * @author Essential Plugin
 * @package WP News and Scrolling Widgets
 */
 
-if( ! defined( 'WPNW_VERSION' ) ) {
-	define( 'WPNW_VERSION', '5.0.4' ); // Version of plugin
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
 }
-if( ! defined( 'WPNW_DIR' ) ) {
+
+if ( ! defined( 'WPNW_VERSION' ) ) {
+	define( 'WPNW_VERSION', '5.0.5' ); // Version of plugin
+}
+if ( ! defined( 'WPNW_DIR' ) ) {
 	define( 'WPNW_DIR', dirname( __FILE__ ) ); // Plugin dir
 }
-if( ! defined( 'WPNW_URL' ) ) {
+if ( ! defined( 'WPNW_URL' ) ) {
 	define( 'WPNW_URL', plugin_dir_url( __FILE__ ) ); // Plugin URL
 }
-if( ! defined( 'WPNW_POST_TYPE' ) ) {
+if ( ! defined( 'WPNW_POST_TYPE' ) ) {
 	define( 'WPNW_POST_TYPE', 'news' ); // Plugin post type
 }
-if( ! defined( 'WPNW_CAT' ) ) {
+if ( ! defined( 'WPNW_CAT' ) ) {
 	define( 'WPNW_CAT', 'news-category' ); // Plugin Category
 }
-if( ! defined( 'WPNW_SITE_LINK' ) ) {
-	define('WPNW_SITE_LINK','https://www.essentialplugin.com'); // Plugin link
+if ( ! defined( 'WPNW_SITE_LINK' ) ) {
+	define('WPNW_SITE_LINK','https://essentialplugin.com'); // Plugin link
 }
-if( ! defined( 'WPNW_PLUGIN_LINK_UPGRADE' ) ) {
-	define('WPNW_PLUGIN_LINK_UPGRADE','https://www.essentialplugin.com/pricing/?utm_source=WP&utm_medium=News&utm_campaign=Upgrade-PRO'); // Plugin Check link
+if ( ! defined( 'WPNW_PLUGIN_LINK_UPGRADE' ) ) {
+	define('WPNW_PLUGIN_LINK_UPGRADE','https://essentialplugin.com/pricing/?utm_source=WP&utm_medium=News&utm_campaign=Upgrade-PRO'); // Plugin Check link
 }
-if( ! defined( 'WPNW_PLUGIN_BUNDLE_LINK' ) ) {
-	define('WPNW_PLUGIN_BUNDLE_LINK', 'https://www.essentialplugin.com/pricing/?utm_source=WP&utm_medium=News&utm_campaign=Welcome-Screen'); // Plugin link
+if ( ! defined( 'WPNW_PLUGIN_BUNDLE_LINK' ) ) {
+	define('WPNW_PLUGIN_BUNDLE_LINK', 'https://essentialplugin.com/pricing/?utm_source=WP&utm_medium=News&utm_campaign=Welcome-Screen'); // Plugin link
 }
-if( ! defined( 'WPNW_PLUGIN_LINK_UNLOCK' ) ) {
-	define('WPNW_PLUGIN_LINK_UNLOCK', 'https://www.essentialplugin.com/pricing/?utm_source=WP&utm_medium=News&utm_campaign=Features-PRO'); // Plugin link
+if ( ! defined( 'WPNW_PLUGIN_LINK_UNLOCK' ) ) {
+	define('WPNW_PLUGIN_LINK_UNLOCK', 'https://essentialplugin.com/pricing/?utm_source=WP&utm_medium=News&utm_campaign=Features-PRO'); // Plugin link
 }
 
 /**
@@ -111,7 +115,7 @@ function wpnw_install() {
 	// IMP to call to generate new rules
 	flush_rewrite_rules();
 
-	if( is_plugin_active('wp-news-and-widget-pro/sp-news-and-widget.php') ) {
+	if ( is_plugin_active('wp-news-and-widget-pro/sp-news-and-widget.php') ) {
 		 add_action('update_option_active_plugins', 'wpnw_deactivate_pro_version');
 	}
 }
@@ -148,14 +152,14 @@ function wpnw_news_admin_notice() {
 	global $pagenow;
 
 	// If not plugin screen
-	if( 'plugins.php' != $pagenow ) {
+	if ( 'plugins.php' != $pagenow ) {
 		return;
 	}
 
 	// Check Lite Version
 	$dir = WP_PLUGIN_DIR . '/wp-news-and-widget-pro/sp-news-and-widget.php';
 
-	if( ! file_exists( $dir ) ) {
+	if ( ! file_exists( $dir ) ) {
 		return;
 	}
 
@@ -163,7 +167,7 @@ function wpnw_news_admin_notice() {
 	$notice_transient		= get_transient( 'wpnw_install_notice' );
 
 	// If free plugin exist
-	if( $notice_transient == false && current_user_can( 'install_plugins' ) ) {
+	if ( $notice_transient == false && current_user_can( 'install_plugins' ) ) {
 			echo '<div class="updated notice" style="position:relative;">
 				<p>
 					<strong>'.sprintf( __('Thank you for activating %s', 'sp-news-and-widget'), 'WP News and three widgets').'</strong>.<br/>
