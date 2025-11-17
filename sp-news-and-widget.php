@@ -5,7 +5,7 @@
 * Text Domain: sp-news-and-widget
 * Domain Path: /languages/
 * Description: A simple News and three widgets(static, scrolling and with thumbs) plugin. Also work with Gutenberg shortcode block.
-* Version: 5.0.5
+* Version: 5.0.6
 * Author: Essential Plugin
 * Author URI: https://essentialplugin.com
 * Contributors: Essential Plugin
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'WPNW_VERSION' ) ) {
-	define( 'WPNW_VERSION', '5.0.5' ); // Version of plugin
+	define( 'WPNW_VERSION', '5.0.6' ); // Version of plugin
 }
 if ( ! defined( 'WPNW_DIR' ) ) {
 	define( 'WPNW_DIR', dirname( __FILE__ ) ); // Plugin dir
